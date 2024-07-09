@@ -32,7 +32,7 @@ function Profile() {
       return
     }
     const data={fullname:newname,email:newmail}
-    const response= await fetch('http://localhost:4000/api/users/update/'+user.uid,{
+    const response= await fetch(`${import.meta.env.VITE_APIURL}/api/users/update/`+user.uid,{
       method: 'PUT',
       body: JSON.stringify(data),
       headers: {

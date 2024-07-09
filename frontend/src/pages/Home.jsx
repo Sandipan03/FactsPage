@@ -15,7 +15,7 @@ function Home() {
   const {user} = useAuthContext()
   useEffect(()=>{
       const fetchfacts= async()=>{
-        const response = await fetch ('http://localhost:4000/api/facts/')
+        const response = await fetch (`${import.meta.env.VITE_APIURL}/api/facts/`)
         const json= await response.json()
         if (response.ok){
           dispatch({type:'SET_FACTS',payload:json})
@@ -36,7 +36,7 @@ function Home() {
     }
     const username= user.username
     const fact={username,title,description}
-    const response= await fetch('http://localhost:4000/api/facts/',{
+    const response= await fetch(`${import.meta.env.VITE_APIURL}/api/facts`,{
       method: 'POST',
       body: JSON.stringify(fact),
       headers: {
